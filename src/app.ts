@@ -11,7 +11,7 @@ const app: Application = express()
     next();
   });
 
-const port: number = 3001
+const port: number = 3000
 
 app.use(routes(''));
 // app.get('/toto', (req: Request, res: Response) => {
