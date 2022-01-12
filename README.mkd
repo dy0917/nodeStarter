@@ -27,3 +27,26 @@ npm run build
 ```
 npm run prod
 ```
+
+## new db and replicaset
+
+.\mongod.exe --dbpath="C:\mongodata\db_27027" --port=27027 --replSet rs
+
+## useful mongo replicaset commands
+mongo --port=27017
+rs.status()
+rs.initiate({_id:"rs",members:[{_id:0,host:"localhost:27017"},{_id:1,host:"localhost:27027"}]})
+rs.slaveOK()
+rs.add( { host: "mongodb3.example.net:27017" } )
+
+## docker commands
+ docker build -t node-app-image . # build docker image with name
+ docker run -v ${PWD}:/app:ro -v /app/node_modules -p 3000:3000 -d --name node-app node-app-image #${PWD} powershell %CD% --cmd :ro read only
+ docker rm container-name
+ docker ps #list containers
+ docker image ls #list images
+ docker ps -a #debug docker container start /stop
+ docker logs containerName #debug docker container 
+
+
+  -e ROOT_URL=http://localhost -e MONGO_URL=mongodb://localhost:27017

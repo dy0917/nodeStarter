@@ -1,21 +1,19 @@
 import { Router, Request, Response } from "express";
-import person from "./person";
+import user from "./user";
+import post from "./post";
+import comment from "./comment";
+import controller from "./controller";
 
 
-export default function(a:string) {
+export default (db:any) => {
 //   const token = new TokenHelper(env.jwtKey);
   const router = Router();
-//   router.get("/", async (req: Request, res: Response) => {
-//     // var silence = new user({ username: "anyother save" });
-//     // await silence.save();
-//     const users = await user.find({});
-//     res.send(users);
-//   });
-
-//   router.use("/token", tokenRoute(token));
-//   router.get("/test", test.getTest);
-//   router.use("/api", token.checkToken(), person);
-  router.use("/person", person);
-//   router.use("/testTracker", testTracker);
+  router.get('/',(req, res)=>{
+    res.send("<h2>Hello world!!!</h2>");
+  });
+  router.use(user);
+  router.use(post);
+  router.use(comment);
+  router.use(controller);
   return router;
 }
