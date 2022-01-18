@@ -1,7 +1,8 @@
 node_modules
 dist
-docker-compose.yml
+docker-compose.*
 Dockerfile
 .git
 .gitignore
 README.mkd
+.dockerignore

@@ -1,7 +1,6 @@
 import Comment from '../Schemas/comment';
 export default {
-
-      async create (comment:any) {
+      async newComment (comment:any) {
             const saveComment = await Comment.create(
                 comment
             );

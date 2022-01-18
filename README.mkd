@@ -1,8 +1,28 @@
+# What it is
+it is nodejs project with MongoDB and Redis
+
+# Structure
+Routes handle middlewares and what controller method should be used
+Controllers handle business logic, then call Service
+Service handle communication with DB
+
+With this structure, business logic can be tested with mocking service function
+Also, if DB changes, only need to rewrite the service layer and the schemas layer, logic is not effected.
+
+# How to use
+Install docker
+run this command to get docker running "docker-compose -f .\docker-compose.yml -f .\docker-compose.dev.yml up -d --build -V"
+I would like to use local env not access to docker env for development, so ports are accessable to mongoDB and redis
+- shutdown docker node-app
+- run "npm run localDev"
+
+# Env viriable management
+- localDev use env-cmd to store env virables
+- For docker env viriables, they are stored in yml find, for security, the env vairables are not passing to docker image 
+
 # Express with Typescript
 
 This repo is linked to this article https://dev.to/codeozz/express-with-typescript-starter-explained-fast-4dn7
-
-It's a very basic repo for people that want to start their own Express server supporting NodeJs
 
 ## Install
 
@@ -13,7 +33,7 @@ npm install
 ## Run
 
 ```
-npm run dev
+npm run localDev
 ```
 
 ## Build TS file
@@ -47,6 +67,4 @@ rs.add( { host: "mongodb3.example.net:27017" } )
  docker image ls #list images
  docker ps -a #debug docker container start /stop
  docker logs containerName #debug docker container 
-
-
-  -e ROOT_URL=http://localhost -e MONGO_URL=mongodb://localhost:27017
+ docker exec -it node-app bash #node-app is container name

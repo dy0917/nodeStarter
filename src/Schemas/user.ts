@@ -1,14 +1,13 @@
 import mongoose from 'mongoose';
 const UserSchema = new mongoose.Schema({
-    name :{
+    username :{
         type:String,
-        required: '{PATH} is required!'
+        unique:true,
+        required: [true, "User must have a username"]
     },
-    bio: {
-        type:String
-    },
-    website:{
-        type:String
+    password:{
+        type:String,
+        required: [true, "User must have a password"]
     },
     posts : [
         {

@@ -2,9 +2,10 @@ import { Router, Request, Response } from "express";
 import Post from '../Controller/postController'
 const router = Router();
 
-router.get('/post',(req:Request,res:Response)=>res.send('ok'));
+router.get('/post',Post.findAll);
 // user routes
-router.post('/post/create/:id', Post.create);
-router.post('/post/populate/:id',Post.userByPost);
+router.post('/post', Post.create);
+router.get('/post/:id', Post.findById);
+
 
 export default router;
