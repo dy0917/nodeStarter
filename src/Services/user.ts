@@ -20,6 +20,11 @@ export default {
         const user = await User.find()
         return user
     },
+
+    findOne : async (filter:any) => {
+        const user = await User.findOne(filter);
+        return user
+    },
     postsById : async (id:string) => {
        const user = await User.findById(id).populate('posts');
        return user;

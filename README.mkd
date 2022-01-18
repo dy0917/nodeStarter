@@ -20,6 +20,9 @@ I would like to use local env not access to docker env for development, so ports
 - localDev use env-cmd to store env virables
 - For docker env viriables, they are stored in yml find, for security, the env vairables are not passing to docker image 
 
+# Further development
+- Use another node project as a new component for other service, list manage joblisting, payment transaction, em
+
 # Express with Typescript
 
 This repo is linked to this article https://dev.to/codeozz/express-with-typescript-starter-explained-fast-4dn7
@@ -68,3 +71,5 @@ rs.add( { host: "mongodb3.example.net:27017" } )
  docker ps -a #debug docker container start /stop
  docker logs containerName #debug docker container 
  docker exec -it node-app bash #node-app is container name
+
+ docker exec -ti nodestarter_mongo_1 ping nodestarter_redis_1   

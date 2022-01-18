@@ -18,6 +18,9 @@ export default {
         try{
             const { username, password } = req.body;
             const isCorrect = await User.login({username, password});
+            const user = await User.findOne({username});
+            console.log(user);
+            req.session.user= user;
             if(isCorrect){
                 res.status(200).json({
                     status:'success'
