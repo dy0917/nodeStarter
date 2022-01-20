@@ -1,6 +1,6 @@
 import express, { Application, Request, Response } from 'express';
 const session = require('express-session');
-import expressSessionMerge from './types/index';
+import re from './ts/index';
 const RedisStore = require('connect-redis')(session);
 
 import cors from 'cors';
@@ -22,11 +22,11 @@ app.use(session({
     secret: "this is a srecect",
     cookie: {
       secure: false,
-      resave: false,
-      saveUninitialized: false,
       httpOnly: true,
       maxAge: 30000
-    }
+    },
+    resave: false,
+    saveUninitialized: true,
 }));
 dbStart();
 
@@ -43,11 +43,7 @@ dbStart();
 
 const port = process.env.PORT || 3000
 
-const r={
-  test:"111111"
-}
-
-app.use(routes(r));
+app.use(routes({}));
 
 app.listen(port, function () {
     console.log(`App is listening on port ${port} !`)

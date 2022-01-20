@@ -4,7 +4,8 @@ console.log(REDIS_URL, REDIS_PORT);
 const initRedisClient = ()=>{
   const redisClient = redis.createClient({
     host: REDIS_URL,
-    port: REDIS_PORT
+    port: REDIS_PORT,
+    ttl: 5
   });
   redisClient.on('error', (e:any) => {
     console.log('Error ' + e);

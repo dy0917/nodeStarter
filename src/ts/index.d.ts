@@ -5,13 +5,14 @@ declare module 'express-session' {
       user: { [key: string]: any };
     }
 }
+
+declare global {
+  namespace Express {
+    interface Request {
+      user: { [key: string]: any };
+    }
+  }
+}
+
 export default 'express-session';
 
-// import "express-session";
-// declare global {
-//     namespace Express {
-//       interface Session {
-//         user?: any
-//       }
-//     }
-//   }

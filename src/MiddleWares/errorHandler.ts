@@ -1,2 +1,2 @@
-import { Request, Response,NextFunction } from 'express';
+import { Request, Response, NextFunction } from 'express';
 //error controller function
