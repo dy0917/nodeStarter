@@ -1,8 +1,8 @@
-node_modules
-dist
+postApp/node_modules
+postApp/dist
 docker-compose.*
-Dockerfile
+postApp/Dockerfile
 .git
 .gitignore
-README.mkd
+postApp/README.mkd
 .dockerignore

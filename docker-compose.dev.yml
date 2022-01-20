@@ -2,12 +2,12 @@ version: "3"
 services:
   node-app:
     build:
-      context: .
+      context: ./postApp
       args:
         NODE_ENV: development
     volumes:
-      - ./:/app:ro
-      - /app/node_modules
+      - ./postApp/:/app:ro
+      - /postApp/app/node_modules
     environment:
       - NODE_ENV=development
       - MONGO_IP=mongo

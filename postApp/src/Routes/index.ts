@@ -8,7 +8,7 @@ export default (db:any) => {
 //   const token = new TokenHelper(env.jwtKey);
   const router = Router();
   router.get('/',(req, res)=>{
-    res.send("<h2>Hello world!!s</h2>");
+    res.send("<h2>Hello world!!</h2>");
   });
   router.use(user);
   router.use(protect, post);
