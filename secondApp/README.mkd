@@ -1,0 +1,75 @@
+# What it is
+it is nodejs project with MongoDB and Redis
+
+# Structure
+Routes handle middlewares and what controller method should be used
+Controllers handle business logic, then call Service
+Service handle communication with DB
+
+With this structure, business logic can be tested with mocking service function
+Also, if DB changes, only need to rewrite the service layer and the schemas layer, logic is not effected.
+
+# How to use
+Install docker
+run this command to get docker running "docker-compose -f .\docker-compose.yml -f .\docker-compose.dev.yml up -d --build -V"
+I would like to use local env not access to docker env for development, so ports are accessable to mongoDB and redis
+- shutdown docker node-app
+- run "npm run localDev"
+
+# Env viriable management
+- localDev use env-cmd to store env virables
+- For docker env viriables, they are stored in yml find, for security, the env vairables are not passing to docker image 
+
+# Further development
+- Use another node project as a new component for other service, list manage joblisting, payment transaction, em
+
+# Express with Typescript
+
+This repo is linked to this article https://dev.to/codeozz/express-with-typescript-starter-explained-fast-4dn7
+
+## Install
+
+```
+npm install
+```
+
+## Run
+
+```
+npm run localDev
+```
+
+## Build TS file
+
+```
+npm run build
+```
+
+## Run for prod
+
+```
+npm run prod
+```
+
+## new db and replicaset
+
+.\mongod.exe --dbpath="C:\mongodata\db_27027" --port=27027 --replSet rs
+
+## useful mongo replicaset commands
+mongo --port=27017
+rs.status()
+rs.initiate({_id:"rs",members:[{_id:0,host:"localhost:27017"},{_id:1,host:"localhost:27027"}]})
+rs.slaveOK()
+rs.add( { host: "mongodb3.example.net:27017" } )
+
+## docker commands
+ docker build -t node-app-image . # build docker image with name
+ docker run -v ${PWD}:/app:ro -v /app/node_modules -p 3000:3000 -d --name node-app node-app-image #${PWD} powershell %CD% --cmd :ro read only
+ docker rm container-name
+ docker ps #list containers
+ docker image ls #list images
+ docker ps -a #debug docker container start /stop
+ docker logs containerName #debug docker container 
+ docker exec -it node-app bash #node-app is container name
+
+ docker exec -ti nodestarter_mongo_1 ping nodestarter_redis_1   
